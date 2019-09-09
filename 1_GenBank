@@ -7,7 +7,7 @@ Modified by: Yu Sun
 Introduction
 This exercise has two main goals: 
 1) Introduction to the types of DNA data contained in the GenBank database (data format, visualization, cross-database links, how biological "features" such as genes are annotated and described as coordinates in the DNA sequence). 
-2) Practice searching the online version of GenBank hosted at the NCBI. Since the number of sequences in GenBank is HUGE it's critically important to be able to search and filter the information. Especially filtering the unwanted sequences can be a challenge, as we shall see. 
+2) Practice searching the online version of GenBank hosted at the NCBI. 
 
 
 
@@ -31,8 +31,7 @@ b) From which organism does the DNA originate?
 c) What kind of information is contained within the HEADER and within the FEATURE block? 
 
 Please notice that the publication from which the DNA sequence originates is cited (and linked via a PubMED ID) within the header. Sometimes multiple publications related to the same gene is listed. This is of great importance since it makes it possible trace the source(s) of the DNA sequence and investigate if the experiments carried out is to be trusted. 
-This can be of real importance if something seems "wrong" with the sequence (for example if this particular gene exhibits a really strange intron/exon structure compared to other closely related genes, or if it simply doesn't matched ANY other know genes of the same family). By investigation of the original publication it's possible to double-check the experimental procedure. It maybe that the article correctly states the gene to be of type XXX but when that data submitted it was accidently annotated as YYY (it is the original researchers responsibility to double-check this). There can also be more serious problems with the experiments ranging from bad/wrong PCR primers, to contamination with DNA from a different species during a cloning step.
-NEVER FORGET: biological data CAN be wrong. 
+
 
 Investigate the PubMed link(s): 
 *) Follow the PubMED link from the sequence entry.
@@ -58,7 +57,7 @@ Do the following:
 *) "Send to" 
 *) Locate the downloaded file on your own computer
 *) By default it's badly named - rename the file to "AB001981.gbk".
-*) Open it in JEdit. 
+*) Open it with any text editor. 
 Notice: What we have now is the "raw" data behind the information shown online, with no fancy HTML formatting and cross-links. The reason for renaming the file is simply a pratice of good file management - now we can by just skimming the filenames guess that it's a GenBank file ("*.gbk") and that it contains the "AB001981" entry.
 
 -> Verify that the contents of the file is as expected (it should look exactly like the information shown online).
@@ -83,18 +82,18 @@ QUESTION 3: Based on you observations: What does these numbers mean? How many co
 View the first CDS (Alpha-D) in FASTA format
 
 QUESTION 4: What does the numbers in the sequence title represent? 
+
 Switch to Graphic view (Format: Graphic) 
 An interactive graphical representation of the GenBank entry will now to shown. The upper part of the visualization show the entire length of the entry (5.891 bp) with bars representing the individual exons within the two gene. 
 *) This zoomed view below can be changed by dragging the blue box in the overview representation.
 *) The zoom level can be changed.
 *) By "mousing over" the bars additional information about that particular feature will be shown. 
 The graphical overview is mostly useful for inspecting GenBank entries with multiple entires (some entries have hundreds of embedded genes). Play around with the interface for a few minutes to see what functionality is offered. 
-We will return to the use of graphical interfaces in navigating huge sequence sets in a later exercise on the UCSC Human Genome Browser. 
 
 
 
 
-(Click to open search in a new window) 
+
 Searching the GenBank
 The key issue to keep in mind when searching GenBank is to avoid drowning in huge amounts of irrelevant data. It is therefore of great importance to filter out unwanted information, WITHOUT losing the relevant entries. 
 Today we will work with searching the TEXTUAL annotation of GenBank entries (keywords, free text etc). We will later get back to sequence based searches (BLAST). 
