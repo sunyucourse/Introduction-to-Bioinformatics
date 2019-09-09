@@ -1,5 +1,6 @@
 Searching the GenBank database
 Exercise written by: Rasmus Wernersson 
+Modified by: Yu Sun
 
 
 
@@ -11,29 +12,28 @@ This exercise has two main goals:
 
 
 Starting the exercise
-The GenBank database is hosted at NCBI (National Center for Biotechnology Information, USA) [Link: http://www.ncbi.nlm.nih.gov/]. Besides the main GenBank database, NCBI also hosts a number of other biological databases (for example whole-genome databases for human, mouse, chimp etc). In this particular exercise we will concentrate on the classical "GenBank" database - the main search interface is located here: http://www.ncbi.nlm.nih.gov/Genbank/index.html 
-Open the "Entrez" query page aimed at searching GenBank: 
-ALL the NCBI databases can be queried through a common search interface named Entrez. On next to all NCBI webpages a search box can be found in the upper part of the page, allowing an easy access for searching the individual databases (or searching across all databases). Click on the following link to open up a new browser windows with Entrez, where to focus is pre-set to search in the GenBank database: 
-http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=Nucleotide 
-(It's NOT necessary to remember this particular convoluted URL - in the future you can just go to the main NCBI webpage and chose "Nucleotide" as the database). 
 
-(Click to open search in a new window) 
+https://www.ncbi.nlm.nih.gov/nucleotide/
 
 
-
-Concerning the DATA in GenBank
-This part of the exercise is about the types of data hosted in GenBank. 
 Searching for a specific ID 
-The typical case for searching for a specific ID in GenBank, will be looking up information from the literature (e.g. a gene found in a study), following up on information from other databases, investigation of lists of interesting genes etc. In this part of the exercise we will be working with a set of alpha-globin genes. 
+In this part of the exercise we will be working with a set of alpha-globin genes. 
 Query information about "AB001981" - after the search, follow the sequence link to inspect the result. 
-By default the result is shown in the GenBank format.
+
+
+
 QUESTION 1:
+
 a) How many genes are contained in this entry?
+
 b) From which organism does the DNA originate?
+
 c) What kind of information is contained within the HEADER and within the FEATURE block? 
+
 Please notice that the publication from which the DNA sequence originates is cited (and linked via a PubMED ID) within the header. Sometimes multiple publications related to the same gene is listed. This is of great importance since it makes it possible trace the source(s) of the DNA sequence and investigate if the experiments carried out is to be trusted. 
 This can be of real importance if something seems "wrong" with the sequence (for example if this particular gene exhibits a really strange intron/exon structure compared to other closely related genes, or if it simply doesn't matched ANY other know genes of the same family). By investigation of the original publication it's possible to double-check the experimental procedure. It maybe that the article correctly states the gene to be of type XXX but when that data submitted it was accidently annotated as YYY (it is the original researchers responsibility to double-check this). There can also be more serious problems with the experiments ranging from bad/wrong PCR primers, to contamination with DNA from a different species during a cloning step.
 NEVER FORGET: biological data CAN be wrong. 
+
 Investigate the PubMed link(s): 
 *) Follow the PubMED link from the sequence entry.
 
@@ -43,6 +43,8 @@ Investigate the PubMed link(s):
 View the sequence entry in FASTA format (Simply click on "Format: FASTA" in the menu) 
 
 Now the entire GenBank entry is shown in FASTA format.
+
+
 
 QUESTION 2:
 a) What happened to the alpha-globin genes? Can they still be found?
