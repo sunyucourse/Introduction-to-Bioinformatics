@@ -1,0 +1,172 @@
+Searching the GenBank database
+Exercise written by: Rasmus Wernersson 
+
+
+
+Introduction
+This exercise has two main goals: 
+1) Introduction to the types of DNA data contained in the GenBank database (data format, visualization, cross-database links, how biological "features" such as genes are annotated and described as coordinates in the DNA sequence). 
+2) Practice searching the online version of GenBank hosted at the NCBI. Since the number of sequences in GenBank is HUGE it's critically important to be able to search and filter the information. Especially filtering the unwanted sequences can be a challenge, as we shall see. 
+
+
+
+Starting the exercise
+The GenBank database is hosted at NCBI (National Center for Biotechnology Information, USA) [Link: http://www.ncbi.nlm.nih.gov/]. Besides the main GenBank database, NCBI also hosts a number of other biological databases (for example whole-genome databases for human, mouse, chimp etc). In this particular exercise we will concentrate on the classical "GenBank" database - the main search interface is located here: http://www.ncbi.nlm.nih.gov/Genbank/index.html 
+Open the "Entrez" query page aimed at searching GenBank: 
+ALL the NCBI databases can be queried through a common search interface named Entrez. On next to all NCBI webpages a search box can be found in the upper part of the page, allowing an easy access for searching the individual databases (or searching across all databases). Click on the following link to open up a new browser windows with Entrez, where to focus is pre-set to search in the GenBank database: 
+http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=Nucleotide 
+(It's NOT necessary to remember this particular convoluted URL - in the future you can just go to the main NCBI webpage and chose "Nucleotide" as the database). 
+
+(Click to open search in a new window) 
+
+
+
+Concerning the DATA in GenBank
+This part of the exercise is about the types of data hosted in GenBank. 
+Searching for a specific ID 
+The typical case for searching for a specific ID in GenBank, will be looking up information from the literature (e.g. a gene found in a study), following up on information from other databases, investigation of lists of interesting genes etc. In this part of the exercise we will be working with a set of alpha-globin genes. 
+Query information about "AB001981" - after the search, follow the sequence link to inspect the result. 
+By default the result is shown in the GenBank format.
+QUESTION 1:
+a) How many genes are contained in this entry?
+b) From which organism does the DNA originate?
+c) What kind of information is contained within the HEADER and within the FEATURE block? 
+Please notice that the publication from which the DNA sequence originates is cited (and linked via a PubMED ID) within the header. Sometimes multiple publications related to the same gene is listed. This is of great importance since it makes it possible trace the source(s) of the DNA sequence and investigate if the experiments carried out is to be trusted. 
+This can be of real importance if something seems "wrong" with the sequence (for example if this particular gene exhibits a really strange intron/exon structure compared to other closely related genes, or if it simply doesn't matched ANY other know genes of the same family). By investigation of the original publication it's possible to double-check the experimental procedure. It maybe that the article correctly states the gene to be of type XXX but when that data submitted it was accidently annotated as YYY (it is the original researchers responsibility to double-check this). There can also be more serious problems with the experiments ranging from bad/wrong PCR primers, to contamination with DNA from a different species during a cloning step.
+NEVER FORGET: biological data CAN be wrong. 
+Investigate the PubMed link(s): 
+*) Follow the PubMED link from the sequence entry.
+
+*) Observe that's is always possible to read the ABSTRACT of the publication in PubMED, even if access to the publication requires subscription. For most (new) publications there will also be a direct link to the publication itself.
+
+*) Return to the sequence entry once again (or perform a new search if you closed the window). 
+View the sequence entry in FASTA format (Simply click on "Format: FASTA" in the menu) 
+
+Now the entire GenBank entry is shown in FASTA format.
+
+QUESTION 2:
+a) What happened to the alpha-globin genes? Can they still be found?
+b) Which part of the GenBank entry has been converted?
+Observe that the name of the sequence is based on the name of the GenBank entry. 
+Go back to GenBank format (Format: GenBank) 
+Save the GenBank "raw data" on you own computer:
+Do the following: 
+
+*) Download -> Genbank(full)
+*) Locate the downloaded file on your own computer
+*) By default it's badly named - rename the file to "AB001981.gbk".
+*) Open it in JEdit. 
+Notice: What we have now is the "raw" data behind the information shown online, with no fancy HTML formatting and cross-links. The reason for renaming the file is simply a pratice of good file management - now we can by just skimming the filenames guess that it's a GenBank file ("*.gbk") and that it contains the "AB001981" entry.
+
+-> Verify that the contents of the file is as expected (it should look exactly like the information shown online).
+
+QUESTION 2.5: Does the downloaded file have UNIX or Windows line-endings? 
+Now it's time to start exploring the genes that are defined in this GenBank entry 
+Click the first "CDS" element (Alpha-D) 
+CDS = CoDing Sequences : The PROTEIN CODING part of a CDS. Basically: the sequence you get when the CODING exons are concatenated (UTR regions are ignored). A CDS always start with a START codon and ends with a STOP codon. 
+Observe the following:
+
+*) What happened to the DNA sequence?
+*) What interval is listed?
+*) Which three nucleotide does the sequence now start and end with? Does this make sense?
+*) Are there any introns present? 
+Repeat the same procedure for the other CDS (Alpha-A). 
+The when looking at the FEATURE table, if first line of text in the definition of each CDS is as follows: 
+join(1104..1192,1306..1510,1614..1742)
+join(4915..5009,5165..5369,5474..5602)
+QUESTION 3: Based on you observations: What does these numbers mean? How many coding Exons does each gene contain? 
+View the first CDS (Alpha-D) in FASTA format
+QUESTION 4: What does the numbers in the sequence title represent? 
+Switch to Graphic view (Format: Graphic) 
+An interactive graphical representation of the GenBank entry will now to shown. The upper part of the visualization show the entire length of the entry (5.891 bp) with bars representing the individual exons within the two gene. 
+*) This zoomed view below can be changed by dragging the blue box in the overview representation.
+*) The zoom level can be changed.
+*) By "mousing over" the bars additional information about that particular feature will be shown. 
+The graphical overview is mostly useful for inspecting GenBank entries with multiple entires (some entries have hundreds of embedded genes). Play around with the interface for a few minutes to see what functionality is offered. 
+We will return to the use of graphical interfaces in navigating huge sequence sets in a later exercise on the UCSC Human Genome Browser. 
+
+
+
+
+(Click to open search in a new window) 
+Searching the GenBank
+The key issue to keep in mind when searching GenBank is to avoid drowning in huge amounts of irrelevant data. It is therefore of great importance to filter out unwanted information, WITHOUT losing the relevant entries. 
+Today we will work with searching the TEXTUAL annotation of GenBank entries (keywords, free text etc). We will later get back to sequence based searches (BLAST). 
+In the first part of the exercise the aim is to locate the human gene for Insulin 
+Search for GenBank entries containing the term "insulin"
+Simply enter "insulin" in the search box and hit "GO".
+Observe the following: 
+*) A large number of entries are found.
+*) Go through a few pages of results and notice that we are offered data from a diverse set of sources: Experimental work, Patent applications, predicted genes, partial genes etc. 
+QUESTION 5: How many search result where returned? 
+Confining the search to specific parts of the annotation: 
+By default the search term is matched against ALL POSSIBLE fields in the GenBank entries - including almost all text in the HEADER and FEATURE table. It's even possible to pick up entries where the match is to one of the authors names and not a gene name! (Perhaps not an issue for insulin). Luckily it is possible to restrict the search to specific pre-indexed fields in the HEADER and FEATURE table ("Search fields"), which makes it possible to make the search much more focused. 
+Spend a few moments to investigate the HEADER section of the GenBank entry you have all received as a hand-out (X01831) to get an idea of how the data is related to specific sections (e.g. KEYWORDS and ORGANISM which we will use in a moment). 
+A schematic overview of the search fields can be found on the NCBI homepage: Search Fields and Qualifiers (you can also find this page by following the "HELP" link in the menu bar, and look for "Search fields"). 
+
+(Click to open the entire list in a new window) 
+Narrow the search to human insulin: 
+*) Query: "human[organism] insulin"
+
+*) Observe that we now only get entries from Human - Homo sapiens (TaxID: 9606)
+*) For all major model organisms the english name (rat, mouse, pig) can be used instead of the full binominal latin name (Rattus norvegicus, Mus musculus, Sus scrofa).
+*) How many hits do we have now?
+*) Do they appear to be insulin genes?
+*) Try inspecting a few of the obvious non-insulin genes, and see if you can find out WHERE the term "insulin" was used. 
+QUESTION 6:How many search result were returned? 
+The main issue here is that we find entries where "insulin" is mentioned anywhere in the entry, and sometimes it's unrelated genes like "Insulin-receptor", "Insulin inhibitor" etc. 
+A good example of a really surprising match is the entry NM_053056. The description of this entry states it to be "Homo sapiens cyclin D1 (CCND1), mRNA". But why do such an entry come up in our search? The culprit of this turns out to be a reference to a publication with the title "Insulin-like growth factor I triggers nuclear accumulation of cyclin D1 in MCF-7S breast cancer cells" (!). 
+The next step is to search for entries where insulin is specifically annotated as a KEYWORD: 
+*) Query: "human[organism] insulin[keyword]
+
+*) Observe that we have now reduced the number of sequences to a level, where it's actually practically possible to inspect them all (even if there's still a fair bit of junk).
+
+*) Find the most likely candidate for the full-length insulin gene by browsing the list of search hits and inspecting promising entries. 
+QUESTION 7:How many search results where found? Which entry is the correct Human Insulin gene?
+
+
+Combining search terms using boolean operators: NOT, AND and OR 
+Our next task will be to find full length insulin genes from as many different organisms as possible. 
+
+Let's start out with a new clean search for Insulin 
+*) Query: "insulin[keyword]"
+
+The number of hits is not that high (< 100, december 2008) and in principle they could all be inspected by hand. However, another possibility is to add search terms to AVOID in order to bring down the false positive rate. 
+By a brief inspection of some of the search hits, it turns out some of them are Insulin-like rather than being a actual insulin gene. We can exclude these by using the NOT keyword: 
+*) Query: "Insulin[keyword] NOT insulin-like"
+Observe that the number of hits go down - but we still have some unwanted entries. 
+Let's get rid of the partial genes: 
+*) Query: "Insulin[keyword] NOT (insulin-like OR part OR partial) 
+Notice the use of parenthesis 
+Conceptually what we are doing heres is to conduct a number of searches that are either COMBINED or SUBTRACTED from each other. The (insulin-like OR part OR partial) search term finds all entries where any of the three terms are found. This list is then excluded from the Insulin[keyword] by using the NOT operator. 
+The use of boolean operators can be visualized graphically using Venn diagrams: Venn Diagrams for Boolean Logic. 
+A good strategy for narrowing down a GenBank search is to build a list of "kill words"/"filter word" (terms to avoid). More terms can be added to the list as search result are inspected, and it's found out why strange entries appear on the result list. 
+A word of caution: Be careful of not throwing the baby out with the bath water - don't add kill-words that are so broad it's will actually exclude the gene(s) we are looking for. 
+About the use of AND: The AND keyword is implicitly used when ever you enter more than one search term: "human globin" will be interpreted as "human AND globin" and only results where BOTH terms are found will be reported. 
+The final part of the exercise to continue to find terms to exclude on you own hand. The point is to bring down the number of search result to a level where it's easy to pick the correct ones. 
+QUESTION 8: 
+*) Which search term did you end up using? 
+*) How many search results do you get now? 
+
+Notice: There are several possible answers to this question, as it will be a balance between filterning out False Positives (things that are NOT insulin) without filterning out (too many) True Positives (things that are actully insulin). 
+
+"Free exercise"
+Now it's time to perform a number of GenBank searches by you own. It's important to think about the search strategy - discuss this within the group. 
+QUESTION 9: Do at least three and report your findings. 
+Find the Rat and Mouse Insulin gene 
+Find the alcohol-dehydrogenase gene from as many organisms as possible. 
+Find the alpha-globin gene from Capra hircus - (Remember: Alpha-globin is part of hemoglobin). 
+Find the alpha-globin gene from all ruminants - (hint: inspect the ORGANISM fields in a genbank entry from an animal you know to be a ruminant, in order to pick up a good search term). If you want to go deeper into the taxonomy, the Tree of Life project have an entry on placental mammals here:
+http://tolweb.org/tree?group=Eutheria&contgroup=Mammalia. 
+Find the actin gene from as many organisms as possible. 
+Avoid mRNA and entries that are part of whole chromosomes, cosmids etc 
+Find the NORMAL p53 gene from human (Somewhat tricky) 
+p53 is involved in cancer and therefore a large number of mutated versions of the gene as been investigated. The problem is here that these mutant versions "pollute" the GenBank database, when we want to search for the "vanilla" version of the gene. 
+For starters try to have a look at one of the mutated versions: S66666. Notice where the term "p53" present and use this to devise your search strategy. (Sometimes this gene also goes by the name "TP53"). 
+The tricky part of this assignment is to find the best search fields (and terms) to use, and to avoid eliminating the real (unmutated) version of the gene when you put together your "kill-word" list. 
+Can you find the mRNA version? The full length gene complete with intron/exon structure? 
+
+
+This file was last modified Tuesday 4th 2013f June 2013 11:49:21 GMT
+
+
