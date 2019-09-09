@@ -50,11 +50,12 @@ QUESTION 2:
 a) What happened to the alpha-globin genes? Can they still be found?
 b) Which part of the GenBank entry has been converted?
 Observe that the name of the sequence is based on the name of the GenBank entry. 
+
 Go back to GenBank format (Format: GenBank) 
 Save the GenBank "raw data" on you own computer:
 Do the following: 
 
-*) Download -> Genbank(full)
+*) "Send to" 
 *) Locate the downloaded file on your own computer
 *) By default it's badly named - rename the file to "AB001981.gbk".
 *) Open it in JEdit. 
@@ -62,22 +63,25 @@ Notice: What we have now is the "raw" data behind the information shown online, 
 
 -> Verify that the contents of the file is as expected (it should look exactly like the information shown online).
 
-QUESTION 2.5: Does the downloaded file have UNIX or Windows line-endings? 
+
 Now it's time to start exploring the genes that are defined in this GenBank entry 
 Click the first "CDS" element (Alpha-D) 
 CDS = CoDing Sequences : The PROTEIN CODING part of a CDS. Basically: the sequence you get when the CODING exons are concatenated (UTR regions are ignored). A CDS always start with a START codon and ends with a STOP codon. 
 Observe the following:
 
 *) What happened to the DNA sequence?
-*) What interval is listed?
 *) Which three nucleotide does the sequence now start and end with? Does this make sense?
 *) Are there any introns present? 
+
 Repeat the same procedure for the other CDS (Alpha-A). 
-The when looking at the FEATURE table, if first line of text in the definition of each CDS is as follows: 
+
+When looking at the FEATURE table, if first line of text in the definition of each CDS is as follows: 
 join(1104..1192,1306..1510,1614..1742)
 join(4915..5009,5165..5369,5474..5602)
+
 QUESTION 3: Based on you observations: What does these numbers mean? How many coding Exons does each gene contain? 
 View the first CDS (Alpha-D) in FASTA format
+
 QUESTION 4: What does the numbers in the sequence title represent? 
 Switch to Graphic view (Format: Graphic) 
 An interactive graphical representation of the GenBank entry will now to shown. The upper part of the visualization show the entire length of the entry (5.891 bp) with bars representing the individual exons within the two gene. 
