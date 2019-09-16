@@ -95,21 +95,22 @@ The graphical overview is mostly useful for inspecting GenBank entries with mult
 
 
 Searching the GenBank
+
 The key issue to keep in mind when searching GenBank is to avoid drowning in huge amounts of irrelevant data. It is therefore of great importance to filter out unwanted information, WITHOUT losing the relevant entries. 
 Today we will work with searching the TEXTUAL annotation of GenBank entries (keywords, free text etc). We will later get back to sequence based searches (BLAST). 
 In the first part of the exercise the aim is to locate the human gene for Insulin 
 Search for GenBank entries containing the term "insulin"
 Simply enter "insulin" in the search box and hit "GO".
 Observe the following: 
+
 *) A large number of entries are found.
 *) Go through a few pages of results and notice that we are offered data from a diverse set of sources: Experimental work, Patent applications, predicted genes, partial genes etc. 
+
 QUESTION 5: How many search result where returned? 
+
 Confining the search to specific parts of the annotation: 
 By default the search term is matched against ALL POSSIBLE fields in the GenBank entries - including almost all text in the HEADER and FEATURE table. It's even possible to pick up entries where the match is to one of the authors names and not a gene name! (Perhaps not an issue for insulin). Luckily it is possible to restrict the search to specific pre-indexed fields in the HEADER and FEATURE table ("Search fields"), which makes it possible to make the search much more focused. 
-Spend a few moments to investigate the HEADER section of the GenBank entry you have all received as a hand-out (X01831) to get an idea of how the data is related to specific sections (e.g. KEYWORDS and ORGANISM which we will use in a moment). 
-A schematic overview of the search fields can be found on the NCBI homepage: Search Fields and Qualifiers (you can also find this page by following the "HELP" link in the menu bar, and look for "Search fields"). 
 
-(Click to open the entire list in a new window) 
 Narrow the search to human insulin: 
 *) Query: "human[organism] insulin"
 
@@ -118,15 +119,16 @@ Narrow the search to human insulin:
 *) How many hits do we have now?
 *) Do they appear to be insulin genes?
 *) Try inspecting a few of the obvious non-insulin genes, and see if you can find out WHERE the term "insulin" was used. 
+
 QUESTION 6:How many search result were returned? 
 The main issue here is that we find entries where "insulin" is mentioned anywhere in the entry, and sometimes it's unrelated genes like "Insulin-receptor", "Insulin inhibitor" etc. 
-A good example of a really surprising match is the entry NM_053056. The description of this entry states it to be "Homo sapiens cyclin D1 (CCND1), mRNA". But why do such an entry come up in our search? The culprit of this turns out to be a reference to a publication with the title "Insulin-like growth factor I triggers nuclear accumulation of cyclin D1 in MCF-7S breast cancer cells" (!). 
-The next step is to search for entries where insulin is specifically annotated as a KEYWORD: 
-*) Query: "human[organism] insulin[keyword]
+
+*) Query: "human[organism] insulin[keyword]"
 
 *) Observe that we have now reduced the number of sequences to a level, where it's actually practically possible to inspect them all (even if there's still a fair bit of junk).
 
 *) Find the most likely candidate for the full-length insulin gene by browsing the list of search hits and inspecting promising entries. 
+
 QUESTION 7:How many search results where found? Which entry is the correct Human Insulin gene?
 
 
@@ -138,40 +140,25 @@ Let's start out with a new clean search for Insulin
 
 The number of hits is not that high (< 100, december 2008) and in principle they could all be inspected by hand. However, another possibility is to add search terms to AVOID in order to bring down the false positive rate. 
 By a brief inspection of some of the search hits, it turns out some of them are Insulin-like rather than being a actual insulin gene. We can exclude these by using the NOT keyword: 
-*) Query: "Insulin[keyword] NOT insulin-like"
-Observe that the number of hits go down - but we still have some unwanted entries. 
+
 Let's get rid of the partial genes: 
-*) Query: "Insulin[keyword] NOT (insulin-like OR part OR partial) 
+*) Query: "Insulin[keyword] NOT (part OR partial) 
 Notice the use of parenthesis 
-Conceptually what we are doing heres is to conduct a number of searches that are either COMBINED or SUBTRACTED from each other. The (insulin-like OR part OR partial) search term finds all entries where any of the three terms are found. This list is then excluded from the Insulin[keyword] by using the NOT operator. 
-The use of boolean operators can be visualized graphically using Venn diagrams: Venn Diagrams for Boolean Logic. 
-A good strategy for narrowing down a GenBank search is to build a list of "kill words"/"filter word" (terms to avoid). More terms can be added to the list as search result are inspected, and it's found out why strange entries appear on the result list. 
-A word of caution: Be careful of not throwing the baby out with the bath water - don't add kill-words that are so broad it's will actually exclude the gene(s) we are looking for. 
-About the use of AND: The AND keyword is implicitly used when ever you enter more than one search term: "human globin" will be interpreted as "human AND globin" and only results where BOTH terms are found will be reported. 
-The final part of the exercise to continue to find terms to exclude on you own hand. The point is to bring down the number of search result to a level where it's easy to pick the correct ones. 
+Conceptually what we are doing heres is to conduct a number of searches that are either COMBINED or SUBTRACTED from each other. The (part OR partial) search term finds all entries where any of the three terms are found. This list is then excluded from the Insulin[keyword] by using the NOT operator. 
+
+The final part of the exercise to continue to find terms to include and exclude on you own hand. The point is to bring down the number of search result to a level where it's easy to pick the correct ones. 
 QUESTION 8: 
 *) Which search term did you end up using? 
 *) How many search results do you get now? 
 
 Notice: There are several possible answers to this question, as it will be a balance between filterning out False Positives (things that are NOT insulin) without filterning out (too many) True Positives (things that are actully insulin). 
 
-"Free exercise"
-Now it's time to perform a number of GenBank searches by you own. It's important to think about the search strategy - discuss this within the group. 
-QUESTION 9: Do at least three and report your findings. 
-Find the Rat and Mouse Insulin gene 
-Find the alcohol-dehydrogenase gene from as many organisms as possible. 
-Find the alpha-globin gene from Capra hircus - (Remember: Alpha-globin is part of hemoglobin). 
-Find the alpha-globin gene from all ruminants - (hint: inspect the ORGANISM fields in a genbank entry from an animal you know to be a ruminant, in order to pick up a good search term). If you want to go deeper into the taxonomy, the Tree of Life project have an entry on placental mammals here:
-http://tolweb.org/tree?group=Eutheria&contgroup=Mammalia. 
+QUESTION 9: 
+Find the alpha-globin gene from Capra hircus
+
 Find the actin gene from as many organisms as possible. 
-Avoid mRNA and entries that are part of whole chromosomes, cosmids etc 
-Find the NORMAL p53 gene from human (Somewhat tricky) 
-p53 is involved in cancer and therefore a large number of mutated versions of the gene as been investigated. The problem is here that these mutant versions "pollute" the GenBank database, when we want to search for the "vanilla" version of the gene. 
-For starters try to have a look at one of the mutated versions: S66666. Notice where the term "p53" present and use this to devise your search strategy. (Sometimes this gene also goes by the name "TP53"). 
-The tricky part of this assignment is to find the best search fields (and terms) to use, and to avoid eliminating the real (unmutated) version of the gene when you put together your "kill-word" list. 
-Can you find the mRNA version? The full length gene complete with intron/exon structure? 
 
 
-This file was last modified Tuesday 4th 2013f June 2013 11:49:21 GMT
+
 
 
