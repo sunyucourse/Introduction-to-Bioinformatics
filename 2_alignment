@@ -1,3 +1,6 @@
+Search the globin sequences in Muscle surver 
+https://www.ebi.ac.uk/Tools/msa/muscle/
+
 >pigeon_alpha-globin-D 
 ATGCTGACCGACTCTGACAAGAAGCTGGTCCTGCAGGTGTGGGAGAAGGTGATCCGCCACCCAGACTGTG 
 GAGCCGAGGCCCTGGAGAGGCTGTTCACCACCTACCCCCAGACCAAGACCTACTTCCCCCACTTCGACTT 
@@ -78,3 +81,7 @@ GCCAACCACATTGATGACATCGCCGGCACCCTCTCCAAGCTCAGCGACCTCCATGCCCACAAGCTCCGCG
 TGGACCCTGTCAACTTCAAACTCCTGGGCCAATGCTTCCTGGTGGTGGTGGCCATCCACCACCCTGCTGC 
 CCTGACCCCGGAGGTCCATGCTTCCCTGGACAAGTTCTTGTGCGCCGTGGGCACTGTGCTGACCGCCAAG 
 TACCGTTAA
+
+1) It is important to use SHORT, descriptive names. Some program do not support long names, and only accept first 30 characters in the names.
+2) Alpha-A and Alpha-D are clearly in a distinct cluster from birds. Alpha 1 and 2 in mammals are more closely related to which bird globin?
+
