@@ -1,19 +1,31 @@
 Introduction
-In this exercise we will be using BLAST (Basic Local Alignment Search Tool) for searching sequence databases such as GenBank (DNA data) and UniProt (protein). When using BLAST for sequence searches it is of utmost importance to be able to critically evaluate the statistical significance of the results returned. 
-The BLAST software package is free to use (Open Source) and can be installed on any local system — it's originally written for UNIX type Operating Systems. The package contains both programs for performing the actual sequence searches against preexisting databases (e.g. "blastn" for DNA databases and "blastp" for protein databases), as well as a tool for creating new databases from scratch (the "fortmatdb" program). 
-In this exercise we will be using the Web-interface to BLAST hosted by the NCBI. For our purpose there are several advantages to this approach: 
+
+In this exercise we will be using BLAST (Basic Local Alignment Search Tool) for searching sequence databases such as GenBank (DNA data) 
+and UniProt (protein). When using BLAST for sequence searches it is of utmost importance to be able to critically evaluate the 
+statistical significance of the results returned. 
+
+The BLAST software package is free to use (Open Source) and can be installed on any local system — it's originally written for UNIX type 
+Operating Systems. The package contains both programs for performing the actual sequence searches against preexisting databases 
+(e.g. "blastn" for DNA databases and "blastp" for protein databases), as well as a tool for creating new databases from scratch 
+(the "fortmatdb" program). 
+
+In this exercise we will be using the Web-interface to BLAST hosted by the NCBI. For our purpose there are several advantages to this 
+approach: 
 We don't have to mess around with a UNIX command prompt. 
 NCBI offers direct access to preformatted BLAST databases of all the data that they host: 
 GenBank (+ derivates) 
 Full Genome database 
 Protein database (Both from translated GenBank and UniProt) 
-It should be noted that running BLAST locally (for example at the super-computer cluster at CBS/DTU) offers much more fine-grained control of DATA and workflow (everything can be scripted/automated) than running BLAST through a web-interface. 
+It should be noted that running BLAST locally (for example at the super-computer cluster at CBS/DTU) offers much more fine-grained 
+control of DATA and workflow (everything can be scripted/automated) than running BLAST through a web-interface. 
+
 Links
 NCBI BLAST main page: http://blast.ncbi.nlm.nih.gov/ 
 Notice: There are links to "Nucleotide BLAST" (including "blastn") and "Protein BLAST" (including "blastp") from this page. 
 NCBI BLAST help pages 
   
 Part 1: Your first BLAST search
+
 Below is the mRNA sequence for insulin from a South American rodent, the Degu (Octodon degus). 
 >gi|202471|gb|M57671.1|OCOINS Octodon degus insulin mRNA, complete cds
 GCATTCTGAGGCATTCTCTAACAGGTTCTCGACCCTCCGCCATGGCCCCGTGGATGCATCTCCTCACCGT
@@ -23,32 +35,51 @@ TGGAGGACCTCCAGGTGGAGCAGGCAGAACTGGGTCTGGAGGCAGGCGGCCTGCAGCCTTCGGCCCTGGA
 GATGATTCTGCAGAAGCGCGGCATTGTGGATCAGTGCTGTAATAACATTTGCACATTTAACCAGCTGCAG
 AACTACTGCAATGTCCCTTAGACACCTGCCTTGGGCCTGGCCTGCTGCTCTGCCCTGGCAACCAATAAAC
 CCCTTGAATGAG
-We will now use a BLASTN search at NCBI to determine whether this sequence looks like the human mRNA for insulin. There are two ways we can do this: 
+
+We will now use a BLASTN search at NCBI to determine whether this sequence looks like the human mRNA for insulin. There are two ways we 
+can do this: 
+
 search the entire database and look for human hits in the results, 
 specifically search the human part of the database. 
+
 We will try both of these possibilities. 
+
 Search against NR
+
 Follow the "nucleotide blast" link from the main BLAST page. 
 In the section "Program Selection" select the option "Somewhat similar sequences (blastn)" 
-Choose "Nucleotide collection (nr/nt)" as the search database. NR is the "Non Redundant" database, which contains all non-redundant (non-identical) sequences from GenBank and the full genome databases. 
+Choose "Nucleotide collection (nr/nt)" as the search database. NR is the "Non Redundant" database, which contains all non-redundant 
+(non-identical) sequences from GenBank and the full genome databases. 
 Click the BLAST button to launch the search. 
-After the search has completed, make yourself familiar with the BLAST output page. After a header with some information about the search, there are three main parts: 
+
+After the search has completed, make yourself familiar with the BLAST output page. After a header with some information about the search,
+there are three main parts: 
+
 Graphic Summary 
-each hit is represented by a line showing which part of the query sequence the alignment covers. The lines are coloured according to alignment score. 
+each hit is represented by a line showing which part of the query sequence the alignment covers. The lines are coloured according to 
+alignment score. 
+
 Descriptions 
 a table with a one-line description of each hit with some alignment statistics. 
+
 Alignments 
 the actual alignments between the query and the database hits. 
+
 Note that you can toggle between hiding and showing each part by clicking on the part title (try it!). 
+
 The columns in the Descriptions table are: 
 Description — the description line from the database 
 Max score — the alignment score of the best match (local alignment) between the query and the database hit 
-Total score — the sum of alignment scores for all matches (alignments) between the query and the database hit (if there is only one match per hit, these two scores are identical) 
+Total score — the sum of alignment scores for all matches (alignments) between the query and the database hit (if there is only one 
+match per hit, these two scores are identical) 
 Query cover — the percentage of the query sequence that is covered by the alignment(s) 
-E value — the Expect value calculated from the Max score (i.e. the number of unrelated hits with that score or better you would expect to find for random reasons) 
+E value — the Expect value calculated from the Max score (i.e. the number of unrelated hits with that score or better you would expect 
+to find for random reasons) 
 Ident — the percent identity in the alignment(s) 
 Accession — the accession number of the database hit. 
-First, take a look at the best hit. Since our search sequence (the query) was taken from GenBank which is part of NR, we should find an identical sequence in the search. Make sure this is the case! 
+
+First, take a look at the best hit. Since our search sequence (the query) was taken from GenBank which is part of NR, we should find an
+identical sequence in the search. Make sure this is the case! 
 
 QUESTION 1.1: 
 Answer the following questions about the best hit: 
@@ -57,98 +88,58 @@ what is the alignment score ("max score")?
 what is the percent identity and query coverage? 
 what is the E-value? 
 are there any gaps in the alignment? 
-Then, find the best hit from human (Homo sapiens) that is not a synthetic construct. (Tip: you can press Ctrl-F in most browsers to search in the page). 
+Then, find the best hit from human (Homo sapiens) that is not a synthetic construct. (Tip: you can press Ctrl-F in most browsers to 
+search in the page). 
 
 QUESTION 1.2: 
 Answer the same questions as before about the hit you found now. 
 Search against Human G+T
-Note: In this context, G+T does not mean Gin and Tonic. 
-Open a new window/tab with the BLAST home page. Make a new BLASTN search with the same query sequence, this time with Database set to Human genomic + transcript (Human G+T). Remember again to select Somewhat similar sequences (blastn) under Program Selection. Consider the best hit. 
-Note: even though you may not have found exactly the same database entry in the two searches, the alignment should be the same. Make sure this is the case by comparing the actual alignments in the two windows where you made the searches. 
+Open a new window/tab with the BLAST home page. Make a new BLASTN search with the same query sequence, this time with Database set to 
+Human genomic + transcript (Human G+T). Remember again to select Somewhat similar sequences (blastn) under Program Selection. Consider 
+the best hit. 
+Note: even though you may not have found exactly the same database entry in the two searches, the alignment should be the same. Make 
+sure this is the case by comparing the actual alignments in the two windows where you made the searches. 
 
 QUESTION 1.3: 
 Answer the same questions as before about the best hit you found in this search. 
 Concerning database size and E-values
-When answering the previous two questions, you may have noticed that the E-value changed, while the alignment score did not. We will now investigate this further. 
+When answering the previous two questions, you may have noticed that the E-value changed, while the alignment score did not. We will 
+now investigate this further. 
 
 QUESTION 1.4: 
-What are the sizes (in basepairs) of the databases we used for the two BLAST searches? (Tip: Expand the "Search summary" section near the top by clicking it). 
+What are the sizes (in basepairs) of the databases we used for the two BLAST searches? (Tip: Expand the "Search summary" section near 
+the top by clicking it). 
 
 QUESTION 1.5: 
 What is the ratio between the database sizes in the two BLAST searches? 
 What is the ratio between the E-values (for the best human hits) in the two BLAST searches? 
 What is the relationship between database size and E-value for hits with identical alignment score? 
 In conclusion: if the database size is doubled, what will happen to the E-value? 
-Part 2: Assessing the statistical significance of BLAST hits
-As discussed in the lecture, there will be a risk of getting false positive results (hits to sequences that are not related to our input sequence) by purely stochastic means. In this first part of the exercise we will be investigating this further, by examining what happens when we submit randomly generated sequence to BLAST searches. 
-Rather than giving out a set of pre-generated DNA/Peptide sequences where you only have our word for their randomness, you'll be generating your own random sequences with the SeqGen server. We previously used d4/d20 dice to generate these sequences manually, but we have decided to let the computer do the work in order for you to save some time. It is important to understand that these computer generated sequences are totally random, just as if you were rolling a die to determine each nucleotide/amino acid in each sequence. 
-Random DNA sequences and BLASTN
-Generate three DNA sequences of length 25bp using SeqGen. 
-
-QUESTION 2.1: 
-Report the three sequences in FASTA format. 
-We will now do a BLASTN search using these three random sequences as queries. Follow the "nucleotide blast" link from the main BLAST page, and, as before, select the option "Somewhat similar sequences (blastn)" in the section "Program Selection". Choose "Nucleotide Collection (nr/nt)" as the search database. 
-VERY IMPORTANT: For this special situation where we BLAST small artificial sequences we need to turn off some the automatics NCBI incorporate when short sequences are detected. Otherwise we'll not be able to see the intended results: 
-Extend the "Algorithm parameters" section (see the screen shot below) in order to gain access to fine-tuning the options. 
-Deselect the "Automatically adjust parameters for short input sequences" option. 
-Set the E-value cut-off ("Expect threshold") to 50
-Paste in your three sequences in FASTA format and start the BLAST search. 
- 
-Browsing BLAST results: select which of your query sequences to inspect in the drop-down box near the top of the page
-Inspect the results. 
 
 
-QUESTION 2.2: 
-Answer the following small questions, and document your findings by pasting in examples of alignments / text snippets from the overview table: 
-Do you find any sequences that look like your input sequences (paste in a few example alignments in your report). 
-What is the typical length of the hits (the alignment length)? 
-What is the typical % identity? 
-In what range is the bit-scores ("max score")? 
-Notice: This is conceptually the same as the "alignment score" we have already met in the pairwise alignment exercise. 
-What is the range of the E-values? 
 
-
-QUESTION 2.3: 
-What is the biological significance of these hits / is there any biological meaning? 
-Random protein sequences and BLASTP
-Now it's time to work with a set of protein sequences - generate three sequences of length 25 aa using SeqGen. 
-Notice 1: The distribution of amino acids will be equal (5% prob) and this is different from true biological sequences - however this is not important for this first part of the exercise. 
-Notice 2: Please recall from the lecture that the way BLASTP selects candidate sequences for full Smith-Waterman alignment is different from BLASTN. (BLASTN - a single short (11 bp +) perfect match hit is needed. BLASTP - a pair of "near match" hits of 3 aa within a 40 aa window is needed). 
-
-
-QUESTION 2.4: 
-Report the sequences in FASTA format. 
-
-Locate the "Protein BLAST" page at NCBI and choose blastp as the algorithm to use. 
-Paste in your sequences in FASTA format, and choose the "NR" database (this is the protein version, consisting of translated CDS'es, UniProt etc). 
-VERY IMPORTANT: We also need to tweak the parameters this time - in the "Algorithm Parameters" section select BLOSUM62 as the alignment matrix to use and set the "Expect threshold" to 1000 (default: 10) - and DISABLE the "Short queries" parameters as we did in the DNA search a moment ago - otherwise our carefully tweaked parameters will be ignored. 
-Perform the BLAST search. 
-Inspect the results. 
-
-
-QUESTION 2.5: 
-(Remember to document your answers in the same manner as Q2.2) 
-What is the typical length of the alignment and do they contain gaps? 
-What is the range of E-values? 
-Try to inspect a few of the alignments in details ("+" means similar sequences) - do you find any that look plausible, if we for a moment ignore the length/E-value? 
-If we had used the default E-value cut-off of 10 would any hits have been found? 
-
-
-QUESTION 2.6: 
-If we compare the result from BLAST'ing random DNA sequences to random Peptide sequences - which kind of search has the higher risk of returning false positives (results that appear plausible, maybe even significant, but are truly unrelated)? 
-Remember to take E-values into your consideration. 
   
 Part 3: using BLAST to transfer functional information by finding homologs
 Homo-, Ortho- and Paralogs
-One of the most common ways to use BLAST as a tool, is in the situation where you have a sequence of unknown function, and want to find out which function it has. Since a large amount of sequence data has been gathered during the years, chances are that an evolutionarily related sequence with known function has already been identified. In general such a related sequence is known as a "homolog". 
+One of the most common ways to use BLAST as a tool, is in the situation where you have a sequence of unknown function, and want to find 
+out which function it has. Since a large amount of sequence data has been gathered during the years, chances are that an evolutionarily 
+related sequence with known function has already been identified. In general such a related sequence is known as a "homolog". 
 Homo-, Ortho- and Paralogs: 
 A Homolog is a general term that describes a sequence that is related by any evolutionary means. 
-An Ortholog ("Ortho" = True) is a sequence that is "the same gene" in a different organism: The sequences shared a single common ancestor sequence, and has now diverged through speciation (e.g. the Alpha-globin gene in Human and Mouse). 
+An Ortholog ("Ortho" = True) is a sequence that is "the same gene" in a different organism: The sequences shared a single common 
+ancestor sequence, and has now diverged through speciation (e.g. the Alpha-globin gene in Human and Mouse). 
 A Paralog arises due to a gene duplication within a species. For example Alpha- and Beta-globin are each others paralogs. 
-Notice that in both cases it's possible to transfer information, for example information about gene family / protein domains. We have already touched upon comparison of (potentially) evolutionarily related sequences in the pairwise alignment exercise. However, this time we do not start out with two sequences we assume are related, but we rather start out with a single sequence ("query sequence") which we will use to search the databases for homologs (we often informally speak of "BLAST hits", when discussing the sequences found). 
+Notice that in both cases it's possible to transfer information, for example information about gene family / protein domains. We have 
+already touched upon comparison of (potentially) evolutionarily related sequences in the pairwise alignment exercise. However, this time
+we do not start out with two sequences we assume are related, but we rather start out with a single sequence ("query sequence") which we
+will use to search the databases for homologs (we often informally speak of "BLAST hits", when discussing the sequences found). 
+
+
   
 BLAST example 1
-Let's start out with a sequence that will produce some good hits in the database. The sequence below is a full-length transcript (mRNA) from a prokaryote. Let's find out what it is. 
+Let's start out with a sequence that will produce some good hits in the database. The sequence below is a full-length transcript (mRNA) 
+from a prokaryote. Let's find out what it is. 
+
 >Unknown_transcript01
 CCACTTGAAACCGTTTTAATCAAAAACGAAGTTGAGAAGATTCAGTCAACTTAACGTTAATATTTGTTTC
 CCAATAGGCAAATCTTTCTAACTTTGATACGTTTAAACTACCAGCTTGGACAAGTTGGTATAAAAATGAG
@@ -171,31 +162,37 @@ CCAATGTACAAATCCGCAATCATCTAAAGAATACGGCAACGAGCTTAGGAAGCACGAACTTGTATGGAAG
 CGGACTTGTCAATGCAGAAGCGGCAACACGCTAATCAATAATAATAGGAGCTGTCCCAAAAGGTCATAGA
 TAAATGACCTTTTGGGGTGGCTTTTTTACATTTGGATAAAAAAGCACAAAAAAATCGCCTCATCGTTTAA
 AATGAAGGTACC
+
 BLASTN search
-Perform a BLAST search in the NR/NT database (BLASTN) using default settings. Remember to set Expect threshold back to the default value, 10. 
+Perform a BLAST search in the NR/NT database (BLASTN) using default settings. Remember to set Expect threshold back to the default value,
+10. 
 
 
 QUESTION 3.1: 
-(Once again remember to document your findings) 
 Do we get any significant hits? 
 What kind of genes (function) do we find? 
 BLASTP search
 Now let's try to do the same at the protein level. 
-Find the longest ORF using VirtualRibosome (hint: remember to search all positive reading frames) and save of copy the sequence in FASTA format. 
+Find the longest ORF using VirtualRibosome (hint: remember to search all positive reading frames) and save of copy the sequence in FASTA
+format. 
 BLAST the sequence (BLASTP) against the NR database. 
 
 
 QUESTION 3.2: 
-(Document!) 
-Report your translated protein sequence in FASTA format. 
-Do we find any conserved protein domains? (Indicated at the very top of the result page, and during the search). Identifying known protein domains can provide important clues to the function of an unknown protein. 
+Do we find any conserved protein domains? (Indicated at the very top of the result page, and during the search). Identifying known 
+protein domains can provide important clues to the function of an unknown protein. 
 Do we find any significant hits? (E-value?) 
 Are all the best hits the same category of enzymes? 
 From what you have seen, what is best for identifying intermediate quality hits - DNA or Protein BLAST? 
   
 BLAST example 2
-In the previous section we have been cheating a bit by using a sequence that was already in the database - let's move on to the following sequence instead. 
-The sequence is a DNA fragment from an unknown non-cultivatable microorganism. It was cloned and sequenced directly from DNA extracted from a soil-sample, and it goes by the poetic name "CLONE12". It was amplified using degenerated PCR primers that target the middle ("core cloning") of the sequence of a group of known enzymes. (I can guarantee this particular sequence is not in the BLAST databases, since I have cloned and sequenced it myself, and it has never been submitted to GenBank). 
+In the previous section we have been cheating a bit by using a sequence that was already in the database - let's move on to the 
+following sequence instead. 
+The sequence is a DNA fragment from an unknown non-cultivatable microorganism. It was cloned and sequenced directly from DNA extracted 
+from a soil-sample, and it goes by the poetic name "CLONE12". It was amplified using degenerated PCR primers that target the middle 
+("core cloning") of the sequence of a group of known enzymes. (I can guarantee this particular sequence is not in the BLAST databases, 
+since I have cloned and sequenced it myself, and it has never been submitted to GenBank). 
+
 LOCUS       CLONE12.DNA    609 BP DS-DNA             UPDATED   06/14/98
 DEFINITION  UWGCG file capture
 ACCESSION   -
@@ -223,14 +220,19 @@ ORIGIN      ?
 QUESTION 3.3 (Long question - read all): 
 Your task is now to find out what kind of enzyme this sequence is likely to encode, using the methods you have learned. 
 
-INSTRUCTIONS: You are free to write the combined answer to this question in a free-style essay-like fashion - just be sure to include the subquestions in your answers. In an exam situation you will need to put all the clues together yourself, reason about the tools/databases to use, and document your findings. 
+INSTRUCTIONS: You are free to write the combined answer to this question in a free-style essay-like fashion - just be sure to include 
+the subquestions in your answers. In an exam situation you will need to put all the clues together yourself, reason about the 
+tools/databases to use, and document your findings. 
 
 STEP 1 - cleaning up the sequence: 
-The sequence is (more or less) in GenBank format and the NCBI BLAST server expects the input to be in FASTA format, or to be "raw" unformatted sequence. 
+The sequence is (more or less) in GenBank format and the NCBI BLAST server expects the input to be in FASTA format, or to be "raw" 
+unformatted sequence. 
 There are two solutions to this: 
-Copy the sequence into a text-editor and manually create a FASTA file ("search and replace" and/or "rectangular selection" is useful for the reformatting). 
+Copy the sequence into a text-editor and manually create a FASTA file ("search and replace" and/or "rectangular selection" is useful for
+the reformatting). 
 This is the most robust solution: it will always work. (Look at the JEdit exercise for a reminder of how to do this). 
-Hope the creators of the web-server you're using were kind enough to automatically remove non-DNA letters (paste in ONLY the DNA lines) - this turns out to be the case for both NCBI BLAST and VirtualRibosome, but it cannot be universally relied upon. 
+Hope the creators of the web-server you're using were kind enough to automatically remove non-DNA letters (paste in ONLY the DNA lines) 
+- this turns out to be the case for both NCBI BLAST and VirtualRibosome, but it cannot be universally relied upon. 
 Subquestion: convert the sequence to FASTA format (manually, in JEdit) and quote it in your report. 
 
 STEP 2 - thinking about the task: 
@@ -251,22 +253,32 @@ You need to copy in small snippets of the BLAST results to document what you obs
 In conclusion: What kind of enzyme is CLONE12? Gather as much evidence as possible. 
   
 Part 4: BLAST'ing Genomes
-So far we have been using BLAST to search in the big broad databases that covers at huge set of sequence from a large range of organisms. In this final part of the exercise we will be doing some more focused searches in smaller databases by targeting specific genomes. 
-Typically this will be useful if you have a gene of known function from one organism (say a cell-cycle controlling gene from Yeast, Saccharomyces cerevisiae) and want to find the human homolog/ortholog to this gene (genes that control cell division are often involved in cancer). 
-When you have been performing the BLAST searches, you have probably already noticed, that's it possible to search specifically in the Human and Mouse genomes (these database only contains sequences from Human/Mouse). It's also possible to restrict the output from searches in the large databases (e.g. NR) to specific organisms. 
-A growing number of organisms have been fully sequenced, and the research teams responsible for a large scale genome project typically put up their own Web resources for accessing the data. For example the Yeast genome is principally hosted in the Saccharomyces Genome Database (SGD - www.yeastgenome.org) - it should be noted that SGD also offers BLAST as a means to search the database. 
+So far we have been using BLAST to search in the big broad databases that covers at huge set of sequence from a large range of organisms.
+In this final part of the exercise we will be doing some more focused searches in smaller databases by targeting specific genomes. 
+Typically this will be useful if you have a gene of known function from one organism (say a cell-cycle controlling gene from Yeast, 
+Saccharomyces cerevisiae) and want to find the human homolog/ortholog to this gene (genes that control cell division are often involved 
+in cancer). 
+When you have been performing the BLAST searches, you have probably already noticed, that's it possible to search specifically in the 
+Human and Mouse genomes (these database only contains sequences from Human/Mouse). It's also possible to restrict the output from 
+searches in the large databases (e.g. NR) to specific organisms. 
+A growing number of organisms have been fully sequenced, and the research teams responsible for a large scale genome project typically 
+put up their own Web resources for accessing the data. For example the Yeast genome is principally hosted in the Saccharomyces Genome 
+Database (SGD - www.yeastgenome.org) - it should be noted that SGD also offers BLAST as a means to search the database. 
 
 Genome specific analysis of histones
 SGD
 Let's do a small study of the relationship between the histones found in Yeast and in Human (evolutionary distance: ~1-1.5 billion years). 
-Look up the HTA2 gene in SGD (http://www.yeastgenome.org - use the search box at the top of the page). Notice that a brief description about the function of the gene and its protein product is displayed (a huge amount of additional information can be found further down the page - much of it Yeast specific). 
+Look up the HTA2 gene in SGD (http://www.yeastgenome.org - use the search box at the top of the page). Notice that a brief description 
+about the function of the gene and its protein product is displayed (a huge amount of additional information can be found further down 
+the page - much of it Yeast specific). 
 
 
 QUESTION 4.1: 
 What information is given about the relationship between this gene and the gene "HTA1"? 
 Browse the page and locate the link to the protein sequence. Save the sequence as a file, we'll need it in a moment. 
 NCBI
-Now return to the NCBI blastp page. Set Database to "Reference proteins (refseq_protein)", and enter Saccharomyces cerevisiae in the Organism field (and accept the suggestion with taxid:4932). 
+Now return to the NCBI blastp page. Set Database to "Reference proteins (refseq_protein)", and enter Saccharomyces cerevisiae in the 
+Organism field (and accept the suggestion with taxid:4932). 
 
 QUESTION 4.2: 
 (Remember to document your answers) 
@@ -282,6 +294,13 @@ How many high-confidence hits (with E-value better than 10-10) are found? (Appro
 What are all the high-confidence hits called? 
 
 Concluding remarks
-Today we have been using BLAST to find a number of homologous genes (and protein-products). If we want to go even deeper into the analysis of the homologs, the next logical step would be to build a dataset of the full-length versions of the sequences we have found (not just the part found by the local alignment in BLAST). 
-A further analysis could consist of a series of pairwise alignments (for finding out what is similar/different between pairs of sequences) or a multiple alignment which could form the basis of establishing the evolutionary relationship between the entire set of sequences. 
-BLAST can also be used as way to build a dataset of sequences base on a known "seed" sequence. As we saw in the GenBank exercise, free-text searching in the GenBank can be difficult, and if we for instance wanted to build a dataset of variants of the insulin gene, an easiy way to go around this would be to BLAST the normal version of the insulin against the sequence database of choice, and pick the best matching hits from here. 
+Today we have been using BLAST to find a number of homologous genes (and protein-products). If we want to go even deeper into the 
+analysis of the homologs, the next logical step would be to build a dataset of the full-length versions of the sequences we have found 
+(not just the part found by the local alignment in BLAST). 
+A further analysis could consist of a series of pairwise alignments (for finding out what is similar/different between pairs of 
+sequences) or a multiple alignment which could form the basis of establishing the evolutionary relationship between the entire set of 
+sequences. 
+BLAST can also be used as way to build a dataset of sequences base on a known "seed" sequence. As we saw in the GenBank exercise, 
+free-text searching in the GenBank can be difficult, and if we for instance wanted to build a dataset of variants of the insulin gene, 
+an easiy way to go around this would be to BLAST the normal version of the insulin against the sequence database of choice, and pick the 
+best matching hits from here. 
